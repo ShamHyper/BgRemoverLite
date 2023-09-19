@@ -1,13 +1,41 @@
 import os
 import colorama
-from rem_bg import *
+from PIL import Image
+from rembg import *
 from colors import *
+
+colorama.init()
 
 input_dir = "input"
 output_dir = "output"
 
+def clr(): 
+    os.system('cls') 
+
+def rem_bg_def():
+    i = 0
+    for filename in os.listdir(input_dir):
+        i += 1
+        print(f"[Лог|Картинка #{i}]Удаляю фон с картинки... жди.")
+
+        input_path = os.path.join(input_dir, filename)
+        output_path = os.path.join(output_dir, f"{filename[:-4]}_output.png")
+
+        if not filename.endswith(".png"):
+            input_image = Image.open(input_path).convert("RGB")
+            input_path = os.path.join(output_dir, f"{filename[:-4]}_input.png")
+            input_image.save(input_path)
+            print(f"[Важно|Картинка #{i}] Удаление фона с не .png картинок может привести к небольшому ухудшению качества.")
+
+        input_image = Image.open(input_path)
+        output_image = remove(input_image)
+        output_image.save(output_path)
+
+        print(f"[Лог|Картинка #{i}]Фон с картинки удалён. Едем дальше.")
+
+    return i
+
 clr()
-colorama.init()
 
 ask_auto_mode = input(f"{w}Хотите использовать изображения из папки input или укажите путь сами?\nЕсли нужен режим папки input, напишите + или нажмите Enter\nЕсли нужен режим пути, напишите -\nВведите ответ: ") 
 
