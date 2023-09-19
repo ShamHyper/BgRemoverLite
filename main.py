@@ -9,10 +9,10 @@ colorama.init()
 input_dir = "input"
 output_dir = "output"
 
-def clr(): 
+def clr(): # Очистка консоли
     os.system('cls') 
 
-def rem_bg_def():
+def rem_bg_def(): 
     i = 0
     for filename in os.listdir(input_dir):
         i += 1
