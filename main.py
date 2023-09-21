@@ -59,7 +59,6 @@ if auto_mode == False:
 if pics == 0: 
     print("")
     print(f"{r}[Ошибка]Чтобы удалить фон с картинки, нужна картинка.")
-
 if pics > 0:
     print("")
     print(f"{g}Готово! Удалены фоны с {pics} картинок.")
