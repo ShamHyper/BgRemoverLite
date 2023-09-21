@@ -18,28 +18,38 @@ current_directory = os.path.dirname(os.path.abspath(__file__))
 def rem_bg_def(): 
     pics = 0
     for filename in os.listdir(input_dir):
-        pics += 1
-        print(f"{y}[Лог|Картинка #{pics}]Удаляю фон с картинки... жди.")
+        try:
+            pics += 1
+            print(f"{y}[Лог|Картинка #{pics}]Удаляю фон с картинки... жди.")
 
-        input_path = os.path.join(input_dir, filename)
-        output_path = os.path.join(output_dir, f"{filename[:-4]}_output.png")
+            input_path = os.path.join(input_dir, filename)
+            output_path = os.path.join(output_dir, f"{filename[:-4]}_output.png")
 
-        if not filename.endswith(".png"):
-            input_image = Image.open(input_path).convert("RGB")
-            input_path = os.path.join(output_dir, f"{filename[:-4]}_input.png")
-            input_image.save(input_path)
-            print(f"{y}[Важно|Картинка #{pics}] Удаление фона с не .png картинок может привести к небольшому ухудшению качества.")
+            if not filename.endswith(".png"):
+                input_image = Image.open(input_path).convert("RGB")
+                input_path = os.path.join(output_dir, f"{filename[:-4]}_input.png")
+                input_image.save(input_path)
+                print(f"{y}[Важно|Картинка #{pics}] Удаление фона с не .png картинок может привести к небольшому ухудшению качества.")
 
-        input_image = Image.open(input_path)
-        output_image = remove(input_image)
-        output_image.save(output_path)
+            input_image = Image.open(input_path)
+            output_image = remove(input_image)
+            output_image.save(output_path)
 
-        print(f"{y}[Лог|Картинка #{pics}]Фон с картинки удалён. Едем дальше.")
+            print(f"{y}[Лог|Картинка #{pics}]Фон с картинки удалён. Едем дальше.")
+        except PermissionError:
+            print(f"{r}[Ошибка|Картинка #{pics}]Нет доступа к файла.")
+            pics -= 1
+            pass
+        except FileNotFoundError:
+            print(f"{r}[Ошибка|Картинка #{pics}]Файл не найден.")
+            pics -= 1
+            pass
     return pics
 
 print(f"{w}Хотите использовать изображения из папки input или укажите путь сами?\n[+]Режим папки input\n[-]Режим своего пути")
 
 while ask_auto_mode not in auto_mode_array:
+    print("")
     ask_auto_mode = input(f"{g}Введите ответ (+ или -): ")
 
 if ask_auto_mode == "+":
@@ -62,9 +72,15 @@ if auto_mode == False:
 if pics == 0: 
     print("")
     print(f"{r}[Ошибка]Чтобы удалить фон с картинки, нужна картинка.")
-if pics > 0:
+if pics == 1:
+    print("")
+    print(f"{g}Готово! Удален фон с {pics} картинки.")
+if pics > 1:
     print("")
     print(f"{g}Готово! Удалены фоны с {pics} картинок.")
+if pics < 0:
+    print("")
+    print(f"{r}[Ошибка]Что-то пошло не так. Пожалуйста, свяжитесь с разработчиком.")
 
 print("")
 input(f"{w}Чтобы выйти из скрипта нажмите Enter...")
