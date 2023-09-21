@@ -1,13 +1,11 @@
 import os
-import colorama
 import shutil
 from clear import clear
 from PIL import Image
-from rembg import *
+from rembg import remove
 from colors import *
 
-colorama.init()
-
+color_start()
 input_dir = "input"
 output_dir = "output"
 current_directory = os.path.dirname(os.path.abspath(__file__))
