@@ -8,7 +8,10 @@ from colors import *
 color_start()
 input_dir = "input"
 output_dir = "output"
+ask_auto_mode = ""
+auto_mode_array = ["+", "-"]
 current_directory = os.path.dirname(os.path.abspath(__file__))
+clear()
 
 def rem_bg_def(): 
     pics = 0
@@ -30,14 +33,14 @@ def rem_bg_def():
         output_image.save(output_path)
 
         print(f"{y}[Лог|Картинка #{pics}]Фон с картинки удалён. Едем дальше.")
-
     return pics
 
-clear()
+print(f"{w}Хотите использовать изображения из папки input или укажите путь сами?\n[+]Режим папки input\n[-]Режим своего пути")
 
-ask_auto_mode = input(f"{w}Хотите использовать изображения из папки input или укажите путь сами?\n[+]Режим папки input\n[-]Режим своего пути\nВведите ответ (+ или -): ") 
+while ask_auto_mode not in auto_mode_array:
+    ask_auto_mode = input(f"{g}Введите ответ (+ или -): ")
 
-if ask_auto_mode == "+" or " ":
+if ask_auto_mode == "+":
     auto_mode = True
 if ask_auto_mode == "-":
     auto_mode = False
