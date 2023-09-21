@@ -13,13 +13,14 @@ Manual installation from https://github.com/ShamHyper/BgRemoverLite/releases
 ## Launch
 1. After cloning / unpacking the script to a convenient location, run the **run file.bat**
 2. Wait for all necessary libraries to be installed
-3. Write + or - depending on what you need: "+" will take the source images from the input folder, and "-" will require specifying the path to the source images
-4. After selecting, you will need to wait for the AI model to load to remove the background
-5. Wait for the removal of backgrounds from images to be completed
+3. Write 1 or 2 to choice language (RU - 1, ENG - 2)
+4. Write + or - depending on what you need: "+" will take the source images from the input folder, and "-" will require specifying the path to the source images
+5. After selecting, you will need to wait for the AI model to load to remove the background
+6. Wait for the removal of backgrounds from images to be completed
 ## Links, information, answers to frequently asked questions
-U2net model - https://github.com/xuebinqin/U-2-Net
+u2net model - https://github.com/xuebinqin/U-2-Net
 
-REMBG library - https://pypi.org/project/rembg/
+rembg library - https://pypi.org/project/rembg/
 
 > [!IMPORTANT]
 > Question: are the source images deleted?
@@ -40,3 +41,5 @@ REMBG library - https://pypi.org/project/rembg/
 > Question: How can I contact you if I encounter a problem?
 >
 > Answer: can I leave a request in - https://github.com/ShamHyper/BgRemoverLite/issues or write a message on my discord server - https://discord.gg/xbZEbdakB6
+
+#### This readme file was translated using machine translation
