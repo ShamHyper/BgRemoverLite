@@ -6,12 +6,14 @@ from rembg import remove
 from colors import *
 
 color_start()
+clear()
+
 input_dir = "input"
 output_dir = "output"
 ask_auto_mode = ""
 auto_mode_array = ["+", "-"]
 current_directory = os.path.dirname(os.path.abspath(__file__))
-clear()
+
 
 def rem_bg_def(): 
     pics = 0
