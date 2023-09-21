@@ -20,7 +20,7 @@ def rem_bg_def():
     for filename in os.listdir(input_dir):
         try:
             pics += 1
-            print(f"{y}[Лог|Картинка #{pics}]Удаляю фон с картинки... жди.")
+            print(f"{b_b}{y}[Лог|Картинка #{pics}]Удаляю фон с картинки... жди.")
 
             input_path = os.path.join(input_dir, filename)
             output_path = os.path.join(output_dir, f"{filename[:-4]}_output.png")
@@ -29,61 +29,61 @@ def rem_bg_def():
                 input_image = Image.open(input_path).convert("RGB")
                 input_path = os.path.join(output_dir, f"{filename[:-4]}_input.png")
                 input_image.save(input_path)
-                print(f"{y}[Важно|Картинка #{pics}] Удаление фона с не .png картинок может привести к небольшому ухудшению качества.")
+                print(f"{b_b}{y}[Важно|Картинка #{pics}] Удаление фона с не .png картинок может привести к небольшому ухудшению качества.")
 
             input_image = Image.open(input_path)
             output_image = remove(input_image)
             output_image.save(output_path)
 
-            print(f"{y}[Лог|Картинка #{pics}]Фон с картинки удалён. Едем дальше.")
+            print(f"{b_b}{y}[Лог|Картинка #{pics}]Фон с картинки удалён. Едем дальше.")
         except PermissionError:
-            print(f"{r}[Ошибка|Картинка #{pics}]Нет доступа к файла.")
+            print(f"{r_b}{w}[Ошибка|Картинка #{pics}]Нет доступа к файла.")
             pics -= 1
             pass
         except FileNotFoundError:
-            print(f"{r}[Ошибка|Картинка #{pics}]Файл не найден.")
+            print(f"{r_b}{w}[Ошибка|Картинка #{pics}]Файл не найден.")
             pics -= 1
             pass
     return pics
 
-print(f"{w}Хотите использовать изображения из папки input или укажите путь сами?\n[+]Режим папки input\n[-]Режим своего пути")
+print(f"{b_b}{w}Хотите использовать изображения из папки input или укажите путь сами?\n[+]Режим папки input\n[-]Режим своего пути")
 
 while ask_auto_mode not in auto_mode_array:
     print("")
-    ask_auto_mode = input(f"{g}Введите ответ (+ или -): ")
+    ask_auto_mode = input(f"{b_b}{g}Введите ответ (+ или -): ")
 
 if ask_auto_mode == "+":
     auto_mode = True
 if ask_auto_mode == "-":
     auto_mode = False
     print("")
-    your_dir = input(f"{w}Введите путь к папке с картинкой/картинками.\nПример - D:/User/Img\nВведите путь: ")
+    your_dir = input(f"{b_b}{w}Введите путь к папке с картинкой/картинками.\nПример - D:/User/Img\nВведите путь: ")
 
 if auto_mode == True:
     print("")
-    print(f"{y}[Лог]Начинаю удаление фонов с картинок в режиме input...")
+    print(f"{b_b}{y}[Лог]Начинаю удаление фонов с картинок в режиме input...")
     pics = rem_bg_def()
 if auto_mode == False:
     input_dir = os.path.abspath(your_dir)
     print("")
-    print(f"{y}[Лог]Начинаю удаление фонов с картинок в папке: {your_dir}...")
+    print(f"{b_b}{y}[Лог]Начинаю удаление фонов с картинок в папке: {your_dir}...")
     pics = rem_bg_def()
 
 if pics == 0: 
     print("")
-    print(f"{r}[Ошибка]Чтобы удалить фон с картинки, нужна картинка.")
+    print(f"{r_b}{w}[Ошибка]Чтобы удалить фон с картинки, нужна картинка.")
 if pics == 1:
     print("")
-    print(f"{g}Готово! Удален фон с {pics} картинки.")
+    print(f"{b_b}{g}Готово! Удален фон с {pics} картинки.")
 if pics > 1:
     print("")
-    print(f"{g}Готово! Удалены фоны с {pics} картинок.")
+    print(f"{b_b}{g}Готово! Удалены фоны с {pics} картинок.")
 if pics < 0:
     print("")
-    print(f"{r}[Ошибка]Что-то пошло не так. Пожалуйста, свяжитесь с разработчиком.")
+    print(f"{r_b}{w}[Ошибка]Что-то пошло не так. Пожалуйста, свяжитесь с разработчиком.")
 
 print("")
-input(f"{w}Чтобы выйти из скрипта нажмите Enter...")
+input(f"{b_b}{w}Чтобы выйти из скрипта нажмите Enter...")
 
 pycache_directory = os.path.join(current_directory, '__pycache__') # Удаление кеша
 shutil.rmtree(pycache_directory)
