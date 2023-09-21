@@ -13,10 +13,10 @@ output_dir = "output"
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
 def rem_bg_def(): 
-    i = 0
+    pics = 0
     for filename in os.listdir(input_dir):
-        i += 1
-        print(f"{y}[Лог|Картинка #{i}]Удаляю фон с картинки... жди.")
+        pics += 1
+        print(f"{y}[Лог|Картинка #{pics}]Удаляю фон с картинки... жди.")
 
         input_path = os.path.join(input_dir, filename)
         output_path = os.path.join(output_dir, f"{filename[:-4]}_output.png")
@@ -25,15 +25,15 @@ def rem_bg_def():
             input_image = Image.open(input_path).convert("RGB")
             input_path = os.path.join(output_dir, f"{filename[:-4]}_input.png")
             input_image.save(input_path)
-            print(f"{y}[Важно|Картинка #{i}] Удаление фона с не .png картинок может привести к небольшому ухудшению качества.")
+            print(f"{y}[Важно|Картинка #{pics}] Удаление фона с не .png картинок может привести к небольшому ухудшению качества.")
 
         input_image = Image.open(input_path)
         output_image = remove(input_image)
         output_image.save(output_path)
 
-        print(f"{y}[Лог|Картинка #{i}]Фон с картинки удалён. Едем дальше.")
+        print(f"{y}[Лог|Картинка #{pics}]Фон с картинки удалён. Едем дальше.")
 
-    return i
+    return pics
 
 clear()
 
@@ -49,20 +49,20 @@ if ask_auto_mode == "-":
 if auto_mode == True:
     print("")
     print(f"{y}[Лог]Начинаю удаление фонов с картинок в режиме input...")
-    i = rem_bg_def()
+    pics = rem_bg_def()
 if auto_mode == False:
     input_dir = os.path.abspath(your_dir)
     print("")
     print(f"{y}[Лог]Начинаю удаление фонов с картинок в папке: {your_dir}...")
-    i = rem_bg_def()
+    pics = rem_bg_def()
 
-if i == 0: 
+if pics == 0: 
     print("")
     print(f"{r}[Ошибка]Чтобы удалить фон с картинки, нужна картинка.")
 
-if i > 0:
+if pics > 0:
     print("")
-    print(f"{g}Готово! Удалены фоны с {i} картинок.")
+    print(f"{g}Готово! Удалены фоны с {pics} картинок.")
 
 print("")
 input(f"{w}Чтобы выйти из скрипта нажмите Enter...")
