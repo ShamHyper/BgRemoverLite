@@ -1,5 +1,6 @@
 import os
 import colorama
+import shutil
 from PIL import Image
 from rembg import *
 from colors import *
@@ -8,6 +9,8 @@ colorama.init()
 
 input_dir = "input"
 output_dir = "output"
+current_directory = os.path.dirname(os.path.abspath(__file__))
+
 
 def clr(): # Очистка консоли
     os.system('cls') 
@@ -37,7 +40,7 @@ def rem_bg_def():
 
 clr()
 
-ask_auto_mode = input(f"{w}Хотите использовать изображения из папки input или укажите путь сами?\nЕсли нужен режим папки input, напишите + или нажмите Enter\nЕсли нужен режим пути, напишите -\nВведите ответ: ") 
+ask_auto_mode = input(f"{w}Хотите использовать изображения из папки input или укажите путь сами?\n[+]Режим папки input\n[-]Режим своего пути\nВведите ответ (+ или -): ") 
 
 if ask_auto_mode == "+" or " ":
     auto_mode = True
@@ -65,4 +68,7 @@ if i > 0:
     print(f"{g}Готово! Удалены фоны с {i} картинок.")
 
 print("")
-input(f"{w}Чтобы выйти из скрипта нажми Enter...")
+input(f"{w}Чтобы выйти из скрипта нажмите Enter...")
+
+pycache_directory = os.path.join(current_directory, '__pycache__') # Удаление кеша
+shutil.rmtree(pycache_directory)
