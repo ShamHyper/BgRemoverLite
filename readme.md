@@ -1,14 +1,14 @@
 # BgRemoverLite
-A program for removing the background of an image using the u2net neural network and the rembg library
+Program for removing the background of an image using the u2net AI and the rembg library
 ## Installation
 ### Method #1:
 Using Git:
-``git clone https://github.com/ShamHyper/BgRemoverLite /``
+``git clone https://github.com/ShamHyper/BgRemoverLite/``
 ### Method #2:
 Manual installation from https://github.com/ShamHyper/BgRemoverLite/releases 
 (LastRelease file.zip)
 ## Requirements
-1. Python 3.10+ (https://www.python.org/downloads/)
+1. Python (tested on 3.10 and 3.11) (https://www.python.org/downloads/)
 2. PC with Windows 10 and above
 ## Launch
 1. After cloning / unpacking the script to a convenient location, run the **run file.bat**
