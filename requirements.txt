@@ -2,3 +2,5 @@ pillow
 rembg
 colorama
 clear
+customtkinter
+CTkMessagebox
