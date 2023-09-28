@@ -1,6 +1,10 @@
 [![wakatime](https://wakatime.com/badge/github/ShamHyper/BgRemoverLite.svg)](https://wakatime.com/badge/github/ShamHyper/BgRemoverLite)
 # BgRemoverLite
 Program for removing the background of an image using the u2net AI and the rembg library
+
+### Now with GUI!
+
+![image](https://github.com/ShamHyper/BgRemoverLite/assets/104412752/9d0a9cb3-7e79-4d5e-9545-62546387baca)
 ## Installation
 ### Method #1:
 Using Git:
